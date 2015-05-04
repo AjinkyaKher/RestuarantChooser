@@ -63,9 +63,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-favorites': {
           templateUrl: 'templates/tab-favorites.html',
-          controller: 'DashCtrl'
+          controller: 'FavoritesCtrl'
         }
-      }
+      },
+      reload: true
     })
 
   .state('tab.account', {

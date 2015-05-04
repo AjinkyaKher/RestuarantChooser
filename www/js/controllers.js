@@ -1,8 +1,21 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('FavoritesCtrl', function($scope, Restaurants) {
+  console.log("Ok");
+    var abc = Restaurants.get(1);
+    console.log(abc);
+    $scope.abc = abc;
 
-.controller('RestaurantsCtrl', function($scope, $http, $window, Chats) {
+    $scope.doRefresh = function() {
+     console.log("Refreshing");
+    var abc = Restaurants.get(1);
+    console.log(abc);
+    $scope.abc = abc; 
+     $scope.$broadcast('scroll.refreshComplete');
+    };
+})
+
+.controller('RestaurantsCtrl', function($scope, $http, $window, Restaurants) {
 
 //Calculate distance between two coordinates
 $scope.distance = []; 
@@ -36,13 +49,13 @@ $window.navigator.geolocation.getCurrentPosition(function(position) {
             console.log("error");
         });
 
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.choose = function(restaurant) {
+    Restaurants.choose(restaurant);
   }
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatDetailCtrl', function($scope, $stateParams, Restaurants) {
+  $scope.chat = Restaurants.get($stateParams.chatId);
 })
 
 .controller('AccountCtrl', function($scope) {

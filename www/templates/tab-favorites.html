@@ -1,4 +1,4 @@
-<ion-view view-title="Let's have today's lunch at..">
+<!-- <ion-view view-title="Let's have today's lunch at..">
   <ion-content class="padding">
   <div class="list card">
       <div class="item item-divider">Willy's Mexicana Grill</div>
@@ -25,5 +25,28 @@
       </div>
     </div>
 
+  </ion-content>
+</ion-view>
+ -->
+
+ <ion-view view-title="Let's have today's lunch at..">
+  <ion-content>
+  <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+    <ion-list> 
+      <!-- <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/restaurants/{{chat.id}}"> -->
+      <ion-item class="item-avatar item-icon-right item-label-right" ng-repeat="restaurant in abc" type="item-text-wrap">
+        <!-- <img ng-src="{{restaurant.icon}}"> -->
+        <h2>{{restaurant.name}}</h2>
+        <!-- <p ng-bind="distance[$index]"> </p>  -->
+        <p>{{restaurant.votes}}</p>
+        <!-- <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-positive" ng-click="choose(restaurant)">
+          Choose
+        </ion-option-button> -->
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
