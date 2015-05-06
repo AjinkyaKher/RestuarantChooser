@@ -1,8 +1,8 @@
-<ion-view view-title="Restaurants">
+<ion-view view-title="Restaurants near you">
   <ion-content>
     <ion-list> 
-      <!-- <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/restaurants/{{chat.id}}"> -->
-      <ion-item class="item-avatar item-icon-right item-label-right" ng-repeat="restaurant in restaurants" type="item-text-wrap">
+      <!-- <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/restaurants/{{restaurant.id}}"> -->
+      <ion-item class="item-avatar item-icon-right item-label-right" ng-repeat="restaurant in restaurants" type="item-text-wrap" href="#/tab/restaurants/{{restaurant.place_id}}">
         <img ng-src="{{restaurant.icon}}">
         <h2>{{restaurant.name}}</h2>
         <p ng-bind="distance[$index]"> </p> 
@@ -12,5 +12,7 @@
         </ion-option-button>
       </ion-item>
     </ion-list>
+  <ion-infinite-scroll on-infinite="loadMore()">
+  </ion-infinite-scroll>
   </ion-content>
 </ion-view>

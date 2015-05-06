@@ -49,11 +49,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
     .state('tab.restaurant-detail', {
-      url: '/restaurants/:chatId',
+      url: '/restaurants/:restaurantId',
       views: {
         'tab-restaurants': {
           templateUrl: 'templates/restaurant-detail.html',
-          controller: 'ChatDetailCtrl'
+          controller: 'RestaurantDetailCtrl'
         }
       }
     })
