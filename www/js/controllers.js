@@ -264,12 +264,45 @@ function calcDistance(destination){
   // }
 })
 
+.controller('LoginCtrl', function($scope, $q, $ionicPopup, $state) {
+ 
+ $scope.data = {};
+
+ $scope.login = function() {
+  console.log($scope.data.username + ", " + $scope.data.password);
+  console.log(window.btoa(unescape(encodeURIComponent($scope.data.username + ':' + $scope.data.password))));
+    $.ajax({
+      type: 'GET',
+      url: 'https://outlook.office365.com/EWS/Exchange.asmx/s/GetUserPhoto?email=' + $scope.data.username + '&size=HR64x64',
+      data: {},
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('Authorization', 'Basic ' + window.btoa(unescape(encodeURIComponent($scope.data.username + ':' + $scope.data.password))))        
+      },
+      success: function (data) {
+          $state.go('tab.restaurants');
+      },
+      error: function (xhr, err, abc) {
+        if(xhr.status==401) {
+          var alertPopup = $ionicPopup.alert({
+                    title: 'Login Failed',
+                    template: 'Please check your credentials!'
+                });
+        }
+        else
+          $state.go('tab.restaurants');
+      }
+    }) 
+  }
+})
+
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
   };
 });
 
+//404 - no picture but authorized
+//401 - not authorized
 
 //Working URL: https://maps.googleapis.com/maps/api/place/nearbysearch/json?userIp=192.168.163.63&key=AIzaSyAab7X5I-rkBKEy1KWRO2MM4wxsFOScD6Y&location=33.85463,-84.35870&rankby=distance&types=restaurant
 
