@@ -1,4 +1,7 @@
-<ion-view view-title="Restaurants near you">
+<ion-view view-title="Restaurants">
+
+<!-- <ion-content ng-controller="WaitCtrl"> </ion-content> -->
+
   <ion-content>
     <ion-list> 
       <!-- <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/restaurants/{{restaurant.id}}"> -->
@@ -12,7 +15,10 @@
         </ion-option-button>
       </ion-item>
     </ion-list>
-  <ion-infinite-scroll on-infinite="loadMore()">
-  </ion-infinite-scroll>
+    
+    <div id="map" style="width:0px;height:0px;"></div>
+
+   
+
   </ion-content>
 </ion-view>

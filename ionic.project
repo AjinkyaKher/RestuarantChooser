@@ -1,10 +1,4 @@
 {
   "name": "RestaurantChooser",
-  "app_id": "",
-  "proxies": [
-    {
-      "path": "/#/tab/restaurants",
-      "proxyUrl": "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-    }
-  ]
+  "app_id": "b0bd0460"
 }

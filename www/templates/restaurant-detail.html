@@ -1,59 +1,30 @@
-<!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
--->
-<ion-view view-title="{{restaurant.icon}}">
+<ion-view view-title="{{restaurant.name}}">
   <ion-content class="padding">
   <div align="center">
     <img ng-src="{{restaurant.icon}}" align="middle" style="width: 64px; height: 64px">
     <p> <b> {{restaurant.name}} </p> </b>
     <p> {{restaurant.formatted_address}} </p>
-    <p> {{restaurant.international_phone_number}} </p>
+    <p> <a href="tel:{{restaurant.international_phone_number}}">{{restaurant.international_phone_number}}</a> </p>
+  </div>
+  
+  <div class="card">
+      <div class="item item-text-wrap">
+          <div class="button-bar">
+              <a class="button" ng-click="openModal()">View Pictures</a>
+          </div>
+      </div>
   </div>
 
-  <!-- <div class="row responsive-md">
-      <div class="col col-25" ng-repeat="photo in photos">
-          <img ng-src="{{photo}}" width="100%" /> -->
-          <!-- <img ng-src=”data:image/jpeg;base64,{{photo}}” width="100%" /> -->
-  <!--         src=”data:image/jpeg;base64,{binary data}” -->
-  <!--     </div>
-  </div> -->
-<!--  <div class="container slider">
-    <img ng-repeat="slide in slides" class="slide" ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
-    <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
-    <a class="arrow next" href="#" ng-click="prevSlide()"></a>
-    <nav class="nav">
-        <div class="wrapper">
-            <ul class="dots">
-                <li class="dot" ng-repeat="slide in slides">
-                    <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                      ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
-            </ul>
-        </div>
-    </nav>
-</div> -->
-<div class="card">
-              <div class="item item-text-wrap">
-                  <div class="button-bar">
-                      <a class="button" ng-click="openModal()">View Pictures</a>
-                  </div>
-              </div>
-          </div>
-
-          <script id="image-modal.html" type="text/ng-template">
-              <div class="modal image-modal transparent" 
-                   ng-click="closeModal()">
-                <ion-slide-box on-slide-changed="slideChanged(index)" 
-                               show-pager="false">
-                  <ion-slide ng-repeat="photo in photos">
-                    <img ng-src="{{photo.src}}" class="fullscreen-image" />
-                    <p class="info">{{photo.msg}}</p>
-                  </ion-slide>
-                </ion-slide-box>
-              </div>
-          </script>
+  <script id="image-modal.html" type="text/ng-template">
+      <div class="modal image-modal transparent" ng-click="closeModal()">
+        <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
+          <ion-slide ng-repeat="photo in photos">
+            <img ng-src="{{photo.src}}" class="fullscreen-image" />
+            <p class="info">{{photo.msg}}</p>
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+  </script>
 
     <!-- <b>Prior checkins and pictures of Slalomites will show up here</b> -->
   </ion-content>
